@@ -35,6 +35,8 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Igual que package.json — el default (3.x) choca con workers-types@5
+          wranglerVersion: "4.112.0"
           # Sube el PAT de GitHub como secret del Worker en cada deploy
           secrets: |
             GITHUB_TOKEN
