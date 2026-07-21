@@ -1,0 +1,9 @@
+# GitDventurer — Cloudflare Worker
+name = "gitdventurer"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# Secrets (no van en este archivo):
+#   GITHUB_TOKEN — PAT clásico con scope `read:user` (o fine-grained solo lectura pública).
+#   Producción:  npx wrangler secret put GITHUB_TOKEN
+#   Desarrollo:  crear .dev.vars con  GITHUB_TOKEN=ghp_xxx
