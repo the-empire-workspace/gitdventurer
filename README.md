@@ -1,9 +1,16 @@
 # GitDventurer ⚔️
 
-Tu perfil de GitHub como **ficha de aventurero RPG**: clase, nivel, atributos, rango y logros calculados a partir de tus commits, PRs, reviews, stars y más. Se genera como **SVG** servido por un Cloudflare Worker, así que se puede incrustar en cualquier `README.md` de GitHub o sitio web como una imagen.
+Tu perfil de GitHub como **carta de aventurero RPG**: clase, nivel, atributos, rango y logros calculados a partir de tus commits, PRs, reviews, stars y más. Se genera como **SVG** servido por un Cloudflare Worker, así que se puede incrustar en cualquier `README.md` de GitHub o sitio web como una imagen.
+
+<details>
+  <summary><img src="https://gitdventurer.theempire.workers.dev/card/decode9" alt="Carta de aventurero de decode9 — click para ver el reverso" /></summary>
+  <img src="https://gitdventurer.theempire.workers.dev/card/decode9/back" alt="Registro del gremio de decode9" />
+</details>
+
+*↑ Carta en vivo, generada por este mismo Worker. Click para voltearla.*
 
 ```markdown
-![Mi ficha de aventurero](https://<tu-worker>.workers.dev/card/<tu-usuario>)
+![Mi carta de aventurero](https://gitdventurer.theempire.workers.dev/card/<tu-usuario>)
 ```
 
 ## El sistema de juego
@@ -136,22 +143,22 @@ GET /card/:username/embed   → HTML interactivo (iframe: tilt 3D + flip al clic
 
 - **README de GitHub** — imagen (GitHub no ejecuta JS ni pasa eventos al SVG; verás el diseño completo y las animaciones de entrada, sin hover):
   ```markdown
-  ![Mi carta](https://<tu-worker>.workers.dev/card/<usuario>)
+  ![Mi carta](https://gitdventurer.theempire.workers.dev/card/<usuario>)
   ```
 - **README con "voltear al click"** — GitHub bloquea el click dentro de la imagen, pero sí soporta `<details>`: un click real en la carta despliega el reverso (el único mecanismo de click que permite un README):
   ```html
   <details>
-    <summary><img src="https://<tu-worker>.workers.dev/card/<usuario>" alt="Carta de aventurero" /></summary>
-    <img src="https://<tu-worker>.workers.dev/card/<usuario>/back" alt="Registro del gremio" />
+    <summary><img src="https://gitdventurer.theempire.workers.dev/card/<usuario>" alt="Carta de aventurero" /></summary>
+    <img src="https://gitdventurer.theempire.workers.dev/card/<usuario>/back" alt="Registro del gremio" />
   </details>
   ```
 - **Sitio web, versión ligera con hover** — `<object>` deja que el SVG reciba el cursor: el glow del rango se intensifica, el sello gira y las barras brillan:
   ```html
-  <object data="https://<tu-worker>.workers.dev/card/<usuario>" type="image/svg+xml"></object>
+  <object data="https://gitdventurer.theempire.workers.dev/card/<usuario>" type="image/svg+xml"></object>
   ```
 - **Sitio web, versión gremio 3D** — iframe con la carta en capas: tilt que sigue al puntero, parallax de profundidad (marco → marca de agua → stats → sello), brillo especular y **flip de 180° al click** que muestra el registro del gremio. Respeta `prefers-reduced-motion` (el flip se mantiene, sin animación):
   ```html
-  <iframe src="https://<tu-worker>.workers.dev/card/<usuario>/embed"
+  <iframe src="https://gitdventurer.theempire.workers.dev/card/<usuario>/embed"
     width="540" height="340" frameborder="0"></iframe>
   ```
 
