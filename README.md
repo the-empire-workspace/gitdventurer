@@ -2,12 +2,15 @@
 
 Tu perfil de GitHub como **carta de aventurero RPG**: clase, nivel, atributos, rango y logros calculados a partir de tus commits, PRs, reviews, stars y más. Se genera como **SVG** servido por un Cloudflare Worker, así que se puede incrustar en cualquier `README.md` de GitHub o sitio web como una imagen.
 
+<img src="https://gitdventurer.theempire.workers.dev/card/decode9" alt="Carta de aventurero de decode9" />
+
 <details>
-  <summary><img src="https://gitdventurer.theempire.workers.dev/card/decode9" alt="Carta de aventurero de decode9 — click para ver el reverso" /></summary>
+  <summary><b>🔄 Voltear la carta — ver el Registro del Gremio</b></summary>
+  <br/>
   <img src="https://gitdventurer.theempire.workers.dev/card/decode9/back" alt="Registro del gremio de decode9" />
 </details>
 
-*↑ Carta en vivo, generada por este mismo Worker. Click para voltearla.*
+*↑ Carta en vivo, generada por este mismo Worker.*
 
 ```markdown
 ![Mi carta de aventurero](https://gitdventurer.theempire.workers.dev/card/<tu-usuario>)
@@ -145,10 +148,13 @@ GET /card/:username/embed   → HTML interactivo (iframe: tilt 3D + flip al clic
   ```markdown
   ![Mi carta](https://gitdventurer.theempire.workers.dev/card/<usuario>)
   ```
-- **README con "voltear al click"** — GitHub bloquea el click dentro de la imagen, pero sí soporta `<details>`: un click real en la carta despliega el reverso (el único mecanismo de click que permite un README):
+- **README con "voltear al click"** — GitHub envuelve toda imagen en un enlace a su URL (un click en la carta siempre la abre), así que el volteo va en el **texto del `<summary>`**, el único click que un README respeta:
   ```html
+  <img src="https://gitdventurer.theempire.workers.dev/card/<usuario>" alt="Carta de aventurero" />
+
   <details>
-    <summary><img src="https://gitdventurer.theempire.workers.dev/card/<usuario>" alt="Carta de aventurero" /></summary>
+    <summary><b>🔄 Voltear la carta — ver el Registro del Gremio</b></summary>
+    <br/>
     <img src="https://gitdventurer.theempire.workers.dev/card/<usuario>/back" alt="Registro del gremio" />
   </details>
   ```
